@@ -31,15 +31,29 @@
           <button id="filter-btn" class="btns">Filter by Urgency</button>
         </section>
       </aside>
-      <section>
-        <article>
-          <h2 id="title-output">Task Title</h2>
-          <img src="images/checkbox.svg" alt="">
-          <img src="images/checkbox-active.svg" alt="">
-          <img src="images/urgent.svg" alt="">
-          <img src="images/delete.svg" alt="">
-          <p>URGENT</p>
-          <p>DELETE</p>
+      <section id="card-area">
+        <article id="card-prompt">
+          <p class="prompt-text">Begin by adding tasks in the fields to the right!</p>
+        </article>
+        <article id="card">
+          <header class="card-header">
+            <h2 id="title-output">Task Title</h2>
+          </header>
+          <main class="task-output"> 
+            <img src="images/checkbox.svg" alt="">
+            <img src="images/checkbox-active.svg" alt="">
+          </main> 
+          </header>
+          <footer>
+            <div class="footer-item">
+              <img id="urgent" src="images/urgent.svg" alt="">
+              <p>URGENT</p>
+            </div>
+            <div class="footer-item">
+              <img id="delete" src="images/delete.svg" alt="">
+              <p>DELETE</p>
+            </div>
+          </footer>
         </article>
       </section>
     </main>  

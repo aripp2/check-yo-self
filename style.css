@@ -5,16 +5,17 @@
 
 /*-----------------Body-----------------*/
 
-/*body {
+body {
  height: 100vh;
  width: 100vw;
-}*/
+}
 img {
-  height: 50px;
-  width: 50px;
+  height: 20px;
+  width: 20px;
 }
 
 main {
+  /*min-height: 600px;*/
   display: flex;
 }
 /*----------------Header----------------*/
@@ -71,7 +72,7 @@ span {
 /*-----------------Side-----------------*/
 
 aside {
-  min-height: 800px;
+  height: 100vh;
   width: 34%;
   background-color: #587A8A;
   border-right: 3px solid #3C6577;
@@ -150,16 +151,78 @@ aside {
 }
 
 #filter-btn {
-  margin: 30px auto;
+  margin: 30px auto 200px;
 }
 
 /*----------------Section----------------*/
 
-section {
+#card-area {
+  height: 100vh;
   width: 66%;
+  background-color: #F3F6F7;
+  columns: 2;
+  column-gap: 1.5rem;
+  padding: 2rem;
 }
 
+#card-prompt {
+  height: 300px;
+  width: 100%;
+  padding: 20%;
+  border: 3px dashed #C7D3D8;
+}
 
+.prompt-text {
+  color: #C7D3D8;
+  font-size: 2em;
+  text-align: center;
+}
+
+#card {
+  height: 100vh;
+  width: 100%;
+  padding: 3px;
+  background-color: #FFFFFF;
+  border: 3px solid #C7D3D8;
+}
+
+.card-header {
+  height: 50px;
+  width: 100%;
+  background-color: #FFFFFF;
+  border-bottom: 3px solid #C7D3D8;
+}
+
+h2 {
+  color: #1F1F3D;
+}
+
+.task-output {
+  height: 150px;
+  width: 100%;
+}
+
+footer {
+  height: 70px;
+  width: 100%;
+  border-top: 3px solid #C7D3D8;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+p {
+  color: #3C6577;
+  font-size: 0.9em;
+  margin-top: 5px;
+}
 
 
 /*-----------------Media-----------------*/
