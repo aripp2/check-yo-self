@@ -8,7 +8,7 @@
 </head>
   <body>
     <header>
-      <h1>CHECK<span>YO'</span>SELF</h1>
+      <h1>CHECK <span>YO'</span> SELF</h1>
       <div class="search">
         <img id="search-img" src="images/search.svg" alt="magnifying glass">
         <input id="search-input" type="text" placeholder="Search">
@@ -16,14 +16,20 @@
     </header>
     <main>
       <aside>
-        <label class="input-labels" for="title-input">Task Title</label>
-        <input id="title-input" type="text">
-        <label class="input-labels" for="task-input">Task Item</label>
-        <input id="task-input" type="text">
-        <button id="add-task-btn">+</button>
-        <button id="make-list-btn" class="btns">Make Task List</button>
-        <button id="clear-btn" class="btns">Clear All</button>
-        <button id="filter-btn" class="btns">Filter by Urgency</button>
+        <section class="create-tasks">
+          <label class="input-labels" for="title-input">Task Title</label>
+          <input id="title-input" type="text">
+          <label class="input-labels" for="task-input">Task Item</label>
+          <div class="task">
+            <input id="task-input" type="text">
+            <button id="add-task-btn">+</button>
+          </div>
+          <button id="make-list-btn" class="btns">Make Task List</button>
+          <button id="clear-btn" class="btns">Clear All</button>
+        </section>
+        <section class="filter-by-urgency">
+          <button id="filter-btn" class="btns">Filter by Urgency</button>
+        </section>
       </aside>
       <section>
         <article>

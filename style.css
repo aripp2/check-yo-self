@@ -20,8 +20,9 @@ main {
 /*----------------Header----------------*/
 
 header {
-  height: 75px;
+  height: 80px;
   width: 100vw;
+  padding: 10px;
   background-color: #1F1F3D;
   display: flex;
   align-items: center;
@@ -30,7 +31,7 @@ header {
 
 h1 {
   color: #FFFFFF;
-  font-size: 2.5em;
+  font-size: 2.2em;
   font-weight: 800;
 }
 
@@ -39,42 +40,83 @@ span {
 }
 
 .search {
-  height: 40px;
-  display: inline;
+  height: 90%;
+  width: 30%;
+  display: flex;
 }
 
 #search-img {
-  /*height: 40px;*/
-  width: 40px;
-  background-color: #F3F6F7;
+  height: 100%;
+  width: 15%;
+  padding: 3.5%;
+  background-color: #C7D3D8;
+  border: none;
+  border-bottom-left-radius: 3px;
+  border-top-left-radius: 3px;
 }
+
+#search-input {
+  height: 100%;
+  width: 85%;
+  padding-left: 10px;
+  border: none;
+  border-bottom-right-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
+/*::placeholder {
+  color: #5356A4;
+}*/
 
 /*-----------------Side-----------------*/
 
 aside {
+  min-height: 800px;
   width: 34%;
+  margin: 0 auto;
+  padding-top: 20px;
   background-color: #587A8A;
+  border-right: 3px solid #3C6577;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+.create-tasks {
+  width: 100%;
+}
+
 .input-labels {
-  justify-content: flex-start;
+  text-align: left;
+  /*justify-content: flex-start;*/
 }
 
 #title-input {
   height: 40px;
   width: 90%;
+  margin: 0 auto;
+  border: 2px solid #1F1F3D;
+  border-radius: 3px;
 }
 
-    
+.task {
+
+}
 
 .btns {
   height: 40px;
   width: 90%;
   color: #FFFFFF;
+  margin: 20px auto;
   background-color: #1F1F3D;
+  border: 2px solid #1F1F3D;
+  border-radius: 3px; 
+}
+
+.filter-by-urgency {
+  width: 100%;
+  margin: 20px auto;
+  border-top: 3px solid #3C6577;
 }
 
 /*----------------Section----------------*/
