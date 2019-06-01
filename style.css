@@ -73,41 +73,69 @@ span {
 aside {
   min-height: 800px;
   width: 34%;
-  margin: 0 auto;
-  padding-top: 20px;
   background-color: #587A8A;
   border-right: 3px solid #3C6577;
+  display: flex;
+  flex-direction: column;
+}
+
+.create-tasks {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.create-tasks {
-  width: 100%;
-}
-
 .input-labels {
+  width: 90%;
+  color: #C7D3D8;
+  font-size: 1em;
+  font-weight: 600;
   text-align: left;
-  /*justify-content: flex-start;*/
+  margin: 30px 0 5px;
 }
 
 #title-input {
-  height: 40px;
+  height: 50px;
   width: 90%;
-  margin: 0 auto;
   border: 2px solid #1F1F3D;
   border-radius: 3px;
 }
 
 .task {
+  height: 50px;
+  width: 90%;
+  display: flex;
+}
 
+#task-input {
+  height: 100%;
+  width: 85%;
+  border: 2px solid #1F1F3D;
+  border-bottom-left-radius: 3px;
+  border-top-left-radius: 3px;
+}
+
+#add-task-btn {
+  height: 100%;
+  width: 15%;
+  color: #FFFFFF;
+  font-size: 4em;
+  font-weight: 300;
+  padding: 2%;
+  background-color: #1F1F3D;
+  border: 2px solid #1F1F3D;
+  border-bottom-right-radius: 3px;
+  border-top-right-radius: 3px;
 }
 
 .btns {
-  height: 40px;
+  height: 50px;
   width: 90%;
   color: #FFFFFF;
-  margin: 20px auto;
+  font-size: 1.3em;
+  font-weight: 600;
+  margin-top: 30px;
   background-color: #1F1F3D;
   border: 2px solid #1F1F3D;
   border-radius: 3px; 
@@ -115,8 +143,14 @@ aside {
 
 .filter-by-urgency {
   width: 100%;
-  margin: 20px auto;
+  margin-top: 30px;
   border-top: 3px solid #3C6577;
+  display: flex;
+  align-items: center;
+}
+
+#filter-btn {
+  margin: 30px auto;
 }
 
 /*----------------Section----------------*/
@@ -124,6 +158,7 @@ aside {
 section {
   width: 66%;
 }
+
 
 
 
