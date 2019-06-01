@@ -10,30 +10,32 @@
     <header>
       <h1>CHECK<span>YO'</span>SELF</h1>
       <div class="search">
-        <img src="images/search.svg" alt="magnifying glass">
+        <img id="search-img" src="images/search.svg" alt="magnifying glass">
         <input id="search-input" type="text" placeholder="Search">
       </div>  
     </header>
-    <aside>
-      <label class="input-labels" for="title-input">Task Title</label>
-      <input id="title-input" type="text">
-      <label class="input-labels" for="task-input">Task Item</label>
-      <input id="task-input" type="text">
-      <button id="add-task-btn">+</button>
-      <button id="make-list-btn" class="btns">Make Task List</button>
-      <button id="clear-btn" class="btns">Clear All</button>
-      <button id="filter-btn" class="btns">Filter by Urgency</button>
-    </aside>
     <main>
+      <aside>
+        <label class="input-labels" for="title-input">Task Title</label>
+        <input id="title-input" type="text">
+        <label class="input-labels" for="task-input">Task Item</label>
+        <input id="task-input" type="text">
+        <button id="add-task-btn">+</button>
+        <button id="make-list-btn" class="btns">Make Task List</button>
+        <button id="clear-btn" class="btns">Clear All</button>
+        <button id="filter-btn" class="btns">Filter by Urgency</button>
+      </aside>
       <section>
-        <h2 id="title-output">Task Title</h2>
-        <img src="images/checkbox.svg" alt="">
-        <img src="images/checkbox-active.svg" alt="">
-        <img src="images/urgent.svg" alt="">
-        <img src="images/delete.svg" alt="">
-        <p>URGENT</p>
-        <p>DELETE</p>
+        <article>
+          <h2 id="title-output">Task Title</h2>
+          <img src="images/checkbox.svg" alt="">
+          <img src="images/checkbox-active.svg" alt="">
+          <img src="images/urgent.svg" alt="">
+          <img src="images/delete.svg" alt="">
+          <p>URGENT</p>
+          <p>DELETE</p>
+        </article>
       </section>
-    </main>
+    </main>  
   </body>
 </html>
