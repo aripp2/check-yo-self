@@ -44,7 +44,7 @@ function disableAddBtn() {
 }
 
 function addTaskItem(task) {
-  addedTaskItem.insertAdjacentHTML('afterbegin', `
+  addedTaskItem.insertAdjacentHTML('beforeend', `
     <ul>
     <li><img id="delete-list-item" src="images/delete-list-item.svg" alt=""><p id="task-to-add">${taskInput.value}</p></li>
     </ul>`);
@@ -56,6 +56,9 @@ function addTaskItem(task) {
   return tasklist;
 };
 
+//for each li, add to taskList array
+//make sure added task appears at bottom of ul
+//get index of each li to target for delete
 
 function createTaskList(task) {
   var taskList = [];
