@@ -205,6 +205,10 @@ li {
   border: 3px dashed #C7D3D8;
 }
 
+.hidden {
+  display: none;
+}
+
 .prompt-text {
   color: #C7D3D8;
   font-size: 2em;

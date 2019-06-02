@@ -49,19 +49,23 @@ function addTaskItem(task) {
     <li><img id="delete-list-item" src="images/delete-list-item.svg" alt=""><p id="task-to-add">${taskInput.value}</p></li>
     </ul>`);
 
-  taskInput.value = '';
   disableAddBtn();
-  createTaskList(task);
+  createTaskList(taskInput.value);
   // console.log('lets see ' taskList);
+  taskInput.value = '';
+  return tasklist;
 };
 
 
-function createTaskList(tasks) {
-   var taskList = [];
-   for(var i = 0; i < tasks.length; i++) {
-    taskList.push();
+function createTaskList(task) {
+  var taskList = [];
+    taskList.splice(0, 0, task);
     console.log('lets see ', taskList);
-   }
+  // for (var i = 0; i < task.length; i++) {
+  //   taskList.splice(-1, 0, task);
+  //   console.log('lets see ', taskList);
+    
+  //  }
 };
 
 
@@ -87,7 +91,7 @@ function createToDoList(obj) {
   return newToDoList;
 }
 
-function addTaskList() {
+function addTaskList(event) {
   event.preventDefault();
   var newToDoList = new ToDoList({
     id: Date.now(), 

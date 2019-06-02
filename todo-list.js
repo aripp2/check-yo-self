@@ -13,7 +13,7 @@ class ToDoList {
   deleteFromStorage() {
 
   }
-  deleteFromStorage () {
+  updateToDo () {
 
   }
   updateTask() {
