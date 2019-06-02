@@ -19,13 +19,14 @@
         <section class="create-tasks">
           <label class="input-labels" for="title-input">Task Title</label>
           <input id="title-input" type="text">
+          <div id="added-task-item"></div>
           <label class="input-labels" for="task-input">Task Item</label>
           <div class="task">
             <input id="task-input" type="text">
-            <button id="add-task-btn">+</button>
+            <button disabled id="add-task-btn">+</button>
           </div>
           <button id="make-list-btn" class="btns">Make Task List</button>
-          <button id="clear-btn" class="btns">Clear All</button>
+          <button disabled id="clear-btn" class="btns">Clear All</button>
         </section>
         <section class="filter-by-urgency">
           <button id="filter-btn" class="btns">Filter by Urgency</button>
@@ -58,4 +59,6 @@
       </section>
     </main>  
   </body>
+    <script type="text/javascript" src="todo-list.js"></script>
+    <script type="text/javascript" src="main.js"></script>
 </html>

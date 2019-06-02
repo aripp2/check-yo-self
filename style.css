@@ -15,7 +15,6 @@ img {
 }
 
 main {
-  /*min-height: 600px;*/
   display: flex;
 }
 /*----------------Header----------------*/
@@ -74,6 +73,7 @@ span {
 aside {
   height: 100vh;
   width: 34%;
+  padding-top: 20px;
   background-color: #587A8A;
   border-right: 3px solid #3C6577;
   display: flex;
@@ -93,7 +93,7 @@ aside {
   font-size: 1em;
   font-weight: 600;
   text-align: left;
-  margin: 30px 0 5px;
+  margin: 10px 0 5px;
 }
 
 #title-input {
@@ -101,6 +101,24 @@ aside {
   width: 90%;
   border: 2px solid #1F1F3D;
   border-radius: 3px;
+}
+
+#added-task-item {
+  width: 80%;
+  margin-top: 20px;
+  display: flex;
+
+}
+
+#delete-list-item {
+ height: 25px;
+ width: 25px;
+}
+
+#task-to-add {
+  color: #C7D3D8;
+  font-size: 1.4em;
+  margin: 0 0 20px 10px;
 }
 
 .task {
@@ -128,6 +146,13 @@ aside {
   border: 2px solid #1F1F3D;
   border-bottom-right-radius: 3px;
   border-top-right-radius: 3px;
+}
+#add-task-btn:disabled {
+  background-color: lightgrey;
+}
+
+#clear-btn:disabled {
+  background-color: lightgrey;
 }
 
 .btns {
