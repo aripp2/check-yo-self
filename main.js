@@ -37,12 +37,18 @@ function enableAddBtn() {
 };
 
 function addTaskItem(task) {
-  addedTaskItem.insertAdjacentHTML('afterbegin', `<img id="delete-list-item" src="images/delete-list-item.svg" alt="">
-    <p id="task-to-add">${taskInput.value}</p>`);
+  addedTaskItem.insertAdjacentHTML('afterbegin', `
+    <ul>
+    <li><img id="delete-list-item" src="images/delete-list-item.svg" alt=""><p id="task-to-add">${taskInput.value}</p></li>
+    </ul>`);
   clearFields();
   addTaskBtn.disabled = true;
-
 };
+
+function deleteTask(task) {
+  
+
+}
 
 
 

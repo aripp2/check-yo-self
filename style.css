@@ -103,11 +103,18 @@ aside {
   border-radius: 3px;
 }
 
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  display: flex;
+}
+
 #added-task-item {
   width: 80%;
   margin-top: 20px;
-  display: flex;
-
 }
 
 #delete-list-item {
@@ -116,6 +123,7 @@ aside {
 }
 
 #task-to-add {
+  width: 100%;
   color: #C7D3D8;
   font-size: 1.4em;
   margin: 0 0 20px 10px;
