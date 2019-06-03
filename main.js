@@ -8,6 +8,7 @@ var cardArea = document.getElementById('card-area');
 var cardPrompt = document.getElementById('card-prompt');
 
 var allToDos = JSON.parse(localStorage.getItem('toDos')) || [];
+var taskList = [];
 
 titleInput.addEventListener('keyup', enableClearAll);
 taskInput.addEventListener('keyup', enableClearAll);
@@ -46,28 +47,27 @@ function disableAddBtn() {
 function addTaskItem(task) {
   addedTaskItem.insertAdjacentHTML('beforeend', `
     <ul>
-    <li><img id="delete-list-item" src="images/delete-list-item.svg" alt=""><p id="task-to-add">${taskInput.value}</p></li>
+    <li id="task-to-add"><img id="delete-list-item" src="images/delete-list-item.svg" alt="">${taskInput.value}</li>
     </ul>`);
 
   disableAddBtn();
   createTaskList(taskInput.value);
-  // console.log('lets see ' taskList);
   taskInput.value = '';
-  return tasklist;
+  // return tasklist;
 };
 
 //for each li, add to taskList array
-//make sure added task appears at bottom of ul
+
 //get index of each li to target for delete
 
+
+
 function createTaskList(task) {
-  var taskList = [];
-    taskList.splice(0, 0, task);
+    taskList.push(task);
     console.log('lets see ', taskList);
-  // for (var i = 0; i < task.length; i++) {
-  //   taskList.splice(-1, 0, task);
-  //   console.log('lets see ', taskList);
-    
+
+  // for (var i = 0; i < taskList.length; i++) {
+  //   taskList.findIndex();
   //  }
 };
 
@@ -81,7 +81,7 @@ function createTaskList(task) {
 function createToDoList(obj) {
   var uniqueId = obj.id;
   var taskTitle = obj.title;
-  var tasks = obj.tasks;
+  var tasks = obj.task;
   var urgency = obj.urgency;
   var newToDoList = new ToDoList({
     id: uniqueId,
@@ -99,7 +99,7 @@ function addTaskList(event) {
   var newToDoList = new ToDoList({
     id: Date.now(), 
     title: titleInput.value, 
-    tasks: taskInput.value, 
+    tasks: taskList.value, 
     urgency: false
   });
   console.log('two ', newToDoList)
@@ -124,8 +124,12 @@ function appendCard(toDoList) {
             <h2 id="title-output">${toDoList.title}</h2>
           </header>
           <main class="task-output"> 
-            <img src="images/checkbox.svg" alt="">
-            <img src="images/checkbox-active.svg" alt="">
+            <ul>
+              <li><img src="images/checkbox.svg" alt="">
+              <p>${toDoList.tasks}</p>
+              <img src="images/checkbox-active.svg" alt="">
+              </li>
+            </ul>
           </main> 
           </header>
           <footer>

@@ -10,8 +10,8 @@ body {
  width: 100vw;
 }
 img {
-  height: 20px;
-  width: 20px;
+  height: 25px;
+  width: 25px;
 }
 
 main {
@@ -58,15 +58,16 @@ span {
 #search-input {
   height: 100%;
   width: 85%;
+  font-size: 1.4em;
   padding-left: 10px;
   border: none;
   border-bottom-right-radius: 3px;
   border-top-right-radius: 3px;
 }
 
-/*::placeholder {
-  color: #5356A4;
-}*/
+::placeholder {
+  font-size: 0.7em;
+}
 
 /*-----------------Side-----------------*/
 
@@ -99,6 +100,8 @@ aside {
 #title-input {
   height: 50px;
   width: 90%;
+  font-size: 1.4em;
+  padding-left: 10px;
   border: 2px solid #1F1F3D;
   border-radius: 3px;
 }
@@ -118,15 +121,17 @@ li {
 }
 
 #delete-list-item {
- height: 25px;
- width: 25px;
+  height: 25px;
+  width: 25px;
+  margin-right: 10px;
 }
 
 #task-to-add {
   width: 100%;
   color: #C7D3D8;
   font-size: 1.4em;
-  margin: 0 0 20px 10px;
+  line-height: 1.25;
+  margin-bottom: 20px;
 }
 
 .task {
@@ -138,6 +143,8 @@ li {
 #task-input {
   height: 100%;
   width: 85%;
+  font-size: 1.4em;
+  padding-left: 10px;
   border: 2px solid #1F1F3D;
   border-bottom-left-radius: 3px;
   border-top-left-radius: 3px;
@@ -150,17 +157,22 @@ li {
   font-size: 4em;
   font-weight: 300;
   /*padding: 2%;*/
+  background-color: #1F1F3D;
   border: 2px solid #1F1F3D;
   border-bottom-right-radius: 3px;
   border-top-right-radius: 3px;
 }
 #add-task-btn:disabled {
-  background-color: lightgrey;
-  border: 1px solid lightgrey;
+  background-color: #59597A;
+  border-left: none;
 }
 
 #clear-btn:disabled {
-  background-color: lightgrey;
+  background-color: #59597A;
+}
+
+#make-list-btn:disabled {
+  background-color: #59597A;
 }
 
 .btns {
@@ -212,7 +224,7 @@ li {
 
 .prompt-text {
   color: #C7D3D8;
-  font-size: 2em;
+  font-size: 1.7em;
   text-align: center;
 }
 
@@ -237,8 +249,9 @@ h2 {
 }
 
 .task-output {
-  height: 150px;
+  /*height: 150px;*/
   width: 100%;
+  padding: 10px;
 }
 
 footer {
