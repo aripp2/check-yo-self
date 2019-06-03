@@ -8,7 +8,7 @@ var cardArea = document.getElementById('card-area');
 var cardPrompt = document.getElementById('card-prompt');
 
 var allToDos = JSON.parse(localStorage.getItem('toDos')) || [];
-var taskList = [];
+// var taskList = [];
 
 titleInput.addEventListener('keyup', enableClearAll);
 taskInput.addEventListener('keyup', enableClearAll);
@@ -17,6 +17,7 @@ taskInput.addEventListener('keyup', enableAddBtn);
 addTaskBtn.addEventListener('keyup', enableAddBtn);
 addTaskBtn.addEventListener('click', addTaskItem);
 makeListBtn.addEventListener('click', addTaskList);
+// makeListBtn.addEventListener('keyup', enableAddTaskList);
 window.addEventListener('load', mapLocalStorage(allToDos));
 
 function enableClearAll() {
@@ -44,6 +45,12 @@ function disableAddBtn() {
   addTaskBtn.disabled = true;
 }
 
+// function enableAddTaskList() {
+  // if (titleInput.value !== '' && taskList.length > 0)
+//   if (taskList.length > 0 && titleInput.value !== '')
+//     addTaskList.disabled = false;
+// }
+
 function addTaskItem(task) {
   addedTaskItem.insertAdjacentHTML('beforeend', `
     <ul>
@@ -52,6 +59,7 @@ function addTaskItem(task) {
 
   disableAddBtn();
   createTaskList(taskInput.value);
+  // instanciateTask(taskList);
   taskInput.value = '';
   // return tasklist;
 };
@@ -60,16 +68,20 @@ function addTaskItem(task) {
 
 //get index of each li to target for delete
 
-
+//pass array through when creating todolist obj
 
 function createTaskList(task) {
+    var taskList = [];
     taskList.push(task);
-    console.log('lets see ', taskList);
+    var listToAdd = taskList;
+    console.log('lets see ', listToAdd);
 
   // for (var i = 0; i < taskList.length; i++) {
   //   taskList.findIndex();
   //  }
 };
+
+
 
 
 // function deleteTask(task) {
@@ -127,7 +139,7 @@ function appendCard(toDoList) {
             <ul>
               <li><img src="images/checkbox.svg" alt="">
               <p>${toDoList.tasks}</p>
-              <img src="images/checkbox-active.svg" alt="">
+              // <img src="images/checkbox-active.svg" alt="">
               </li>
             </ul>
           </main> 
