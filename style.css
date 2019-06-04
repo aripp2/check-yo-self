@@ -117,16 +117,16 @@ li {
 
 #added-task-item {
   width: 80%;
-  margin-top: 20px;
+  margin: 20px 0 0 0;
 }
 
-#delete-list-item {
+.delete-list-item {
   height: 25px;
   width: 25px;
   margin-right: 10px;
 }
 
-#task-to-add {
+.task-to-add {
   width: 100%;
   color: #C7D3D8;
   font-size: 1.4em;
@@ -160,6 +160,12 @@ li {
   border-bottom-right-radius: 3px;
   border-top-right-radius: 3px;
 }
+
+#plus-img {
+  height: 85%;
+  width: 85%;
+}
+
 #add-task-btn:disabled {
   background-color: #59597A;
   border-left: none;
@@ -227,8 +233,8 @@ li {
 }
 
 #card {
-  /*height: 100vh;*/
   width: 100%;
+  margin-bottom: 25px;
   padding: 3px;
   background-color: #FFFFFF;
   border: 2px solid #C7D3D8;
@@ -247,7 +253,6 @@ h2 {
 }
 
 .task-output {
-  /*height: 150px;*/
   width: 100%;
   padding: 10px;
 }
@@ -270,7 +275,7 @@ footer {
   align-items: center;
 }
 
-#delete, #urgent {
+.delete, .urgent {
   height: 25px;
   width: 25px;
 }

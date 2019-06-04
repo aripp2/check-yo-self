@@ -19,9 +19,5 @@ class ToDoList {
   updateTask() {
     
   }
-  // instanciateTask(tasks) {
-  //   for (var i = 0; i < tasks.length; i++)
-  //   this.tasks.push(tasks);
-  // console.log('here ', taskList);
-  // }
+  
 }
