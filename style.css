@@ -72,7 +72,7 @@ span {
 /*-----------------Side-----------------*/
 
 aside {
-  height: 100vh;
+ /* height: 100vh;*/
   width: 34%;
   padding-top: 20px;
   background-color: #587A8A;
@@ -206,7 +206,7 @@ li {
 /*----------------Card Area----------------*/
 
 #card-area {
-  height: 100vh;
+  /*height: 100vh;*/
   width: 66%;
   background-color: #F3F6F7;
   columns: 2;
@@ -217,7 +217,7 @@ li {
 #card-prompt {
   height: 300px;
   width: 100%;
-  padding: 20%;
+  padding: 10%;
   border: 3px dashed #C7D3D8;
   break-inside: avoid;
 }
@@ -254,7 +254,17 @@ h2 {
 
 .task-output {
   width: 100%;
-  padding: 10px;
+  padding: 10px 10px 0 10px;
+}
+
+.check {
+  height: 20px;
+  width: 20px;
+  margin: 5px 10px 0 0;
+} 
+
+.card-list-item {
+  color: #1F1F3D;
 }
 
 footer {
