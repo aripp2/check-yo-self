@@ -19,7 +19,7 @@ addTaskBtn.addEventListener('click', addTaskItem);
 makeListBtn.addEventListener('click', addTaskList);
 addedTaskItem.addEventListener('click', deleteTask);
 // makeListBtn.addEventListener('keyup', enableAddTaskList);
-window.addEventListener('load', mapLocalStorage(allToDos));
+window.addEventListener('load', mapLocalStorage);
 // window.addEventListener('load', mapLocalStorage(taskItems));
 
 function enableClearAll() {
@@ -76,7 +76,7 @@ function deleteTask(event) {
   };
 };
 
-function createToDoList(obj, taskListArray) {
+function createToDoList(obj) {
   var uniqueId = obj.id;
   var taskTitle = obj.title;
   var tasks = obj.tasks;
@@ -88,7 +88,7 @@ function createToDoList(obj, taskListArray) {
     urgency: urgency
   })
   appendCard(newToDoList);
-  appendTaskList(taskListArray);
+  appendTaskList(obj.tasks);
   return newToDoList;
 };
 
@@ -115,29 +115,56 @@ function addTaskList(event) {
     tasks: taskListArray, 
     urgency: false
   });
-  createToDoList(newToDoList, taskListArray);
+  appendCard(newToDoList);
+  // createToDoList(newToDoList, taskListArray);
   allToDos.push(newToDoList);
   newToDoList.saveToStorage(allToDos);
   clearFields();
   disableAddBtn();
 };
 
-function mapLocalStorage(savedLists) {
-  var listOfToDos = savedLists.map(function(obj) {
-    return listOfToDos
+
+
+
+
+
+function mapLocalStorage() {
+  var listOfToDos = allToDos.map(function(obj) {
+    return  obj = new ToDoList(obj); 
   });
+  console.log(listOfToDos)
   allToDos = listOfToDos;
-  createToDoList(allToDos);  
+  // createToDoList(allToDos);  
 };
+
+function generateTasks(obj) {
+  var listItems = `<ul class="appended-tasks">`
+  console.log(obj)
+  for (var i = 0; i < obj.tasks.length; i++) {
+    listItems +=    `
+    <li class="card-list-item"><img class="check" src="images/checkbox.svg" alt="">${obj.tasks[i].taskName}</li>
+      `
+  }
+  return listItems;
+}
+
+repopulateCards(allToDos)
+
+function repopulateCards(array) {
+  for (var i = 0; i < array.length; i++) {
+    appendCard(array[i]);
+  }
+}
 
 function appendCard(toDoList) {
   cardPrompt.classList.add('hidden');
+  var listItems = generateTasks(toDoList);
   cardArea.insertAdjacentHTML('afterbegin',`<article id="card" data-id="${toDoList.id}">
           <header class="card-header">
             <h2 id="title-output">${toDoList.title}</h2>
           </header>
           <main class="task-output"> 
-            <ul class="appended-tasks">
+            ${listItems}
             </ul>
           </main> 
           </header>
@@ -154,28 +181,7 @@ function appendCard(toDoList) {
         </article>`);
 };
 
-function appendTaskList(taskListArray) {
-  var listItems = document.querySelector('.appended-tasks');
-  taskListArray.forEach(task => {
-    listItems.insertAdjacentHTML('beforeend',
-      `
-    <li class="task-to-add card-list-item"><img class="check" src="images/checkbox.svg" alt="">${task.taskName}</li>
-      `);
-  }) 
-  addedTaskItem.innerHTML = '';
-};
 
-
-// function appendTaskList(taskListArray) {
-//   var listItems = document.querySelector('.appended-tasks');
-//   taskListArray.forEach(function(task) {
-//     listItems.insertAdjacentHTML('beforeend',
-//       `
-//     <li class="task-to-add card-list-item"><img class="check" src="images/checkbox.svg" alt="">${task.taskName}</li>
-//       `);
-//   }) 
-//   addedTaskItem.innerHTML = '';
-// };
 
 // <img src="images/checkbox-active.svg" alt="">
 
