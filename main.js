@@ -92,6 +92,38 @@ function createToDoList(obj, taskListArray) {
   return newToDoList;
 }
 
+// function reinstanciateCard() {
+//   event.preventDefault();
+//   var taskListArray = createTaskItems();
+//   // console.log(taskListArray);
+//   var toDoList = new ToDoList({
+//     id: Date.now(), 
+//     title: titleInput.value, 
+//     tasks: taskListArray, 
+//     urgency: false
+//   });
+//   appendCard(toDoList);
+//   reappendTaskList(taskListArray);
+//   allToDos.push(toDoList);
+//   newToDoList.saveToStorage(allToDos);
+// }
+
+
+
+// function reappendTaskList(taskList) {
+//   var listItems = document.querySelector('.appended-tasks');
+//   var taskArray = allToDos.
+
+
+//   taskList.forEach(task => {
+//     listItems.insertAdjacentHTML('beforeend',
+//       `
+//     <li class="task-to-add"><img src="images/checkbox.svg" alt="">${task.taskName}</li>
+//       `);
+//   }) 
+//   addedTaskItem.innerHTML = '';
+// }
+
 function createTaskItems() {
   var domTasks = document.querySelectorAll('.task-to-add');
   var taskItems = [];
@@ -109,13 +141,14 @@ function createTaskItems() {
 function addTaskList(event) {
   event.preventDefault();
   var taskListArray = createTaskItems();
-  // console.log(taskListArray);
   var newToDoList = new ToDoList({
     id: Date.now(), 
     title: titleInput.value, 
     tasks: taskListArray, 
     urgency: false
   });
+  appendCard(newToDoList);
+  appendTaskList(taskListArray);
   createToDoList(newToDoList, taskListArray);
   allToDos.push(newToDoList);
   newToDoList.saveToStorage(allToDos);
@@ -125,14 +158,29 @@ function addTaskList(event) {
   console.log('saved ', allToDos)
 };
 
-function mapLocalStorage(savedLists, tasks) {
+function mapLocalStorage(savedLists) {
+  console.log(allToDos[0].tasks);
   console.log(savedLists);
-  console.log(taskItems);
-  var listOfTasks = savedLists.map(function(obj, tasks) {
-    return createToDoList(obj, tasks)
+  var taskListArray = mapSavedTasks(savedLists.tasks);
+  var listOfToDos = savedLists.map(function(obj) {
+    return listOfToDos
   });
-  allToDos = listOfTasks;
+ 
+
+  allToDos = listOfToDos;
+  taskListArray = listOfTasks;
+  createToDoList(allToDos);
 };
+
+function mapSavedTasks(tasks) {
+  var  listOfTasks = [];
+  console.log('tasks ', tasks)
+  for (var i = 0; i < tasks.length; i++) {
+    listOfTasks.push(tasks[i]);
+    console.log('list ', listOfTasks)
+    return listOfTasks
+  }
+}
 
 
 
@@ -142,13 +190,6 @@ function mapLocalStorage(savedLists, tasks) {
 //   allToDos = refreshLists;
 // };
 
-
-// function mapLocalStorage(oldIdeas) {
-//   var newIdeas = oldIdeas.map(function(object) {
-//     return turnObjectIntoIdeas(object);
-//   });
-//   ideas = newIdeas;
-// };
 
 // function mapLocalStorage(lists) {
 //   var refreshTaskArray = lists.map(function(lists) {
