@@ -10,14 +10,14 @@ class ToDoList {
     var allTasks = JSON.stringify(toDoList);
     localStorage.setItem('toDos', allTasks);
   }
+  updateTask() {
+    
+  }
   deleteFromStorage() {
 
   }
   updateToDo () {
 
-  }
-  updateTask() {
-    
   }
   
 }

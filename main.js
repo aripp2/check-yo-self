@@ -20,6 +20,7 @@ makeListBtn.addEventListener('click', addTaskList);
 titleInput.addEventListener('keyup', enableAddTaskList)
 addedTaskItem.addEventListener('click', deleteTask);
 addedTaskItem.addEventListener('click', enableAddTaskList);
+cardArea.addEventListener('click', cardAreaHandler);
 window.addEventListener('load', mapLocalStorage);
 
 function enableClearAll() {
@@ -136,9 +137,10 @@ function generateTasks(obj) {
   for (var i = 0; i < obj.tasks.length; i++) {
     listItems +=    
     `
-    <li class="card-list-item"><img class="check" src="images/checkbox.svg" alt="empty circle">${obj.tasks[i].taskName}</li>
+    <li class="card-list-item" data-id="${obj.tasks[i].taskId}"><img id="status" class="check" src="images/checkbox.svg" alt="empty circle">${obj.tasks[i].taskName}</li>
       `
   }
+  console.log('data ', obj.tasks[0].taskId)
   return listItems;
 };
 
@@ -163,15 +165,99 @@ function appendCard(toDoList) {
           </header>
           <footer>
             <div class="footer-item">
-              <img class="urgent" src="images/urgent.svg" alt="">
+              <img class="urgent" src="images/urgent.svg" alt="blue lightning bolt">
               <p>URGENT</p>
             </div>
             <div class="footer-item">
-              <img class="delete" src="images/delete.svg" alt="">
+              <img class="delete" src="images/delete.svg" alt="circle with x">
               <p>DELETE</p>
             </div>
           </footer>
         </article>`);
 };
+
+// <img src="images/checkbox-active.svg" alt="">
+
+function cardAreaHandler(event) {
+  updateCompleted(event);
+};
+
+
+
+function getCardId(event) {
+ if (event.target.closest('article')) {
+  console.log('clicked on a card')
+  return event.target.closest('#card').getAttribute('data-id');
+ }
+};
+
+function getCardIndex(id) {
+ return allToDos.findIndex(function(obj) {
+   return obj.id == parseInt(id);
+ });
+};
+
+function getTaskId(event) {
+  if (event.target.classList.contains('card-list-item') || event.target.classList.contains('check')) {
+  var index = getCardIndex(getCardId(event));
+  var taskId = event.target.closest('.card-list-item').getAttribute('data-id');
+  var taskIndex = getTaskIndex(taskId, index);
+  console.log('taskIndex ',taskIndex)
+  }
+};
+
+function getTaskIndex(id, cardIndex) {
+  return allToDos[cardIndex].tasks.findIndex(function(taskObj) {
+    return taskObj.taskId == parseInt(id);
+  })
+};
+
+
+
+
+function updateCompleted(event) {
+   var cardId = getCardId(event);
+   var cardIndex = getCardIndex(cardId);
+   var taskId = getTaskId(event);
+   // var taskIndex = getTaskIndex()
+   // var completed = 'images/checkbox-active.svg';
+   // var not-completed = document.querySelector(`#card[data-id="${cardId}"] #not-completed`);
+   // console.log('id ', cardId);
+   // console.log('index ', cardIndex);
+   // console.log('task id ', taskId);
+  
+ }
+
+
+  // return event.target.closest.classList.contains('.card-list-item')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//    notCompleted.src = completed;
+//    toDoList[].updateToDo().
+//    // ideas[cardIndex].updateStar();
+//  if (toDoList[cardIndex].star === false) {
+//    var whiteStar = 'images/star.svg';
+//    oldStar.src = whiteStar;
+//  } else {
+//    oldStar.src = yellowStar;
+//    }
+//  }
+// };
 
 
