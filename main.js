@@ -128,7 +128,7 @@ function mapLocalStorage() {
     return  obj = new ToDoList(obj); 
   });
   allToDos = listOfToDos; 
-  repopulateCards(allToDos);
+  populateCards(allToDos);
 };
 
 function generateTasks(obj) {
@@ -143,7 +143,7 @@ function generateTasks(obj) {
 };
 
 
-function repopulateCards(array) {
+function populateCards(array) {
   for (var i = 0; i < array.length; i++) {
     appendCard(array[i]);
   }
@@ -174,48 +174,4 @@ function appendCard(toDoList) {
         </article>`);
 };
 
-// <img src="images/checkbox-active.svg" alt="">
-
-function getUniqueId(event) {
-  return event.target.closest('#card').getAttribute('data-id');
-};
-
-function getCardIndex(id) {
-  return ideas.findIndex(function(arrayObj) {
-    return arrayObj.id == parseInt(id);
-  })
-};
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- function updateStarBtn(event) {
-  if (event.target.closest('.check')) {  
-    var cardId = getUniqueId(event);
-    var cardIndex = getCardIndex(cardId);
-    var yellowStar = 'images/star-active.svg'; 
-    var oldStar = document.querySelector(`.card[data-id="${cardId}"] #white-star-img`);
-    oldStar.src = yellowStar;
-    ideas[cardIndex].updateStar();
-  if (ideas[cardIndex].star === false) {
-    var whiteStar = 'images/star.svg';
-    oldStar.src = whiteStar;
-  } else {
-    oldStar.src = yellowStar;
-    }
-  }
-};
 
