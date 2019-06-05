@@ -5,23 +5,14 @@
 
 /*-----------------Body-----------------*/
 
-body {
-  height: 100vh;
-  width: 100vw;
-}
-img {
-  height: 25px;
-  width: 25px;
-}
-
 main {
   display: flex;
 }
+
 /*----------------Header----------------*/
 
 header {
   height: 80px;
-  width: 100vw;
   padding: 10px;
   background-color: #1F1F3D;
   display: flex;
@@ -48,7 +39,7 @@ span {
 #search-img {
   height: 100%;
   width: 15%;
-  padding: 3.5%;
+  padding: 3%;
   background-color: #C7D3D8;
   border: none;
   border-bottom-left-radius: 3px;
@@ -72,13 +63,10 @@ span {
 /*-----------------Side-----------------*/
 
 aside {
- /* height: 100vh;*/
   width: 34%;
   padding-top: 20px;
   background-color: #587A8A;
   border-right: 3px solid #3C6577;
-  display: flex;
-  flex-direction: column;
 }
 
 .create-tasks {
@@ -91,10 +79,10 @@ aside {
 .input-labels {
   width: 90%;
   color: #C7D3D8;
+  margin: 10px 0 5px;
   font-size: 1em;
   font-weight: 600;
   text-align: left;
-  margin: 10px 0 5px;
 }
 
 #title-input {
@@ -192,11 +180,9 @@ li {
 }
 
 .filter-by-urgency {
-  width: 100%;
   margin-top: 30px;
   border-top: 3px solid #3C6577;
   display: flex;
-  align-items: center;
 }
 
 #filter-btn {
@@ -206,12 +192,11 @@ li {
 /*----------------Card Area----------------*/
 
 #card-area {
-  /*height: 100vh;*/
   width: 66%;
+  padding: 2rem;
   background-color: #F3F6F7;
   columns: 2;
   column-gap: 1.5rem;
-  padding: 2rem;
 }
 
 #card-prompt {
@@ -236,7 +221,7 @@ li {
   width: 100%;
   margin-bottom: 25px;
   padding: 3px;
-  background-color: #FFFFFF;
+  background-color: #FAFDFF;
   border: 2px solid #C7D3D8;
   break-inside: avoid;
 }
@@ -244,7 +229,7 @@ li {
 .card-header {
   height: 45px;
   width: 100%;
-  background-color: #FFFFFF;
+  background-color: #FAFDFF;
   border-bottom: 2px solid #C7D3D8;
 }
 
@@ -267,7 +252,7 @@ h2 {
   color: #1F1F3D; 
   font-size: 1.4em;
   line-height: 1.25;
-  margin-bottom: 10px;
+  margin-bottom: 25px;
 }
 
 footer {
@@ -299,5 +284,106 @@ p {
   margin: 5px;
 }
 
-
 /*-----------------Media-----------------*/
+
+@media screen and (max-width: 800px) {
+
+.search {
+  width: 40%;
+}
+
+aside {
+  width: 45%;
+}
+
+#card-area {
+  width: 55%;
+  columns: 1;
+}
+
+}
+
+@media screen and (max-width: 600px) {
+
+main {
+  flex-direction: column;
+}
+
+header {
+  height: 185px;
+  padding: 20px 5px;
+  flex-direction: column;
+}
+
+h1 {
+  font-size: 2.7em;
+  margin: 0 auto;
+}
+
+.search {
+  height: 60px;
+  width: 90%;
+}
+
+#search-img {
+  width: 13%;
+}
+
+#search-input {
+  width: 87%;
+}
+
+::placeholder {
+  font-size: 0.9em;
+}
+
+aside {
+  width: 100%;
+}
+
+.input-labels {
+  font-size: 1.2em;
+  margin: 20px 0 5px;
+}
+
+#title-input {
+  height: 60px;
+}
+
+.task {
+  height: 60px;
+}
+
+#task-input {
+  width: 87%;
+}
+
+#add-task-btn {
+  width: 13%;
+  padding: 2%;
+}
+
+.btns {
+  height: 60px;
+  font-size: 1.7em;
+}
+
+#filter-btn {
+  margin: 35px auto 35px;
+}
+
+#card-area {
+  width: 100%;
+  padding: 1rem;
+}
+
+.card-header {
+  padding: 5px;
+}
+
+h2 {
+  width: 95%;
+  margin: 0;
+}
+
+}

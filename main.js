@@ -128,6 +128,7 @@ function mapLocalStorage() {
     return  obj = new ToDoList(obj); 
   });
   allToDos = listOfToDos; 
+  populateCards(allToDos);
 };
 
 function generateTasks(obj) {
@@ -135,15 +136,14 @@ function generateTasks(obj) {
   for (var i = 0; i < obj.tasks.length; i++) {
     listItems +=    
     `
-    <li class="card-list-item"><img class="check" src="images/checkbox.svg" alt="">${obj.tasks[i].taskName}</li>
+    <li class="card-list-item"><img class="check" src="images/checkbox.svg" alt="empty circle">${obj.tasks[i].taskName}</li>
       `
   }
   return listItems;
 };
 
-repopulateCards(allToDos)
 
-function repopulateCards(array) {
+function populateCards(array) {
   for (var i = 0; i < array.length; i++) {
     appendCard(array[i]);
   }
@@ -174,7 +174,4 @@ function appendCard(toDoList) {
         </article>`);
 };
 
-
-
-// <img src="images/checkbox-active.svg" alt="">
 
