@@ -17,10 +17,10 @@ taskInput.addEventListener('keyup', enableAddBtn);
 addTaskBtn.addEventListener('keyup', enableAddBtn);
 addTaskBtn.addEventListener('click', addTaskItem);
 makeListBtn.addEventListener('click', addTaskList);
+titleInput.addEventListener('keyup', enableAddTaskList)
 addedTaskItem.addEventListener('click', deleteTask);
-// makeListBtn.addEventListener('keyup', enableAddTaskList);
+addedTaskItem.addEventListener('click', enableAddTaskList);
 window.addEventListener('load', mapLocalStorage);
-// window.addEventListener('load', mapLocalStorage(taskItems));
 
 function enableClearAll() {
   if (titleInput.value !== '' || taskInput.value !== '') {
@@ -41,10 +41,11 @@ function disableAddBtn() {
   addTaskBtn.disabled = true;
 };
 
-// function enableAddTaskList() {
-//   if (taskTitle.value !== '') 
-//   makeListBtn.disabled = false;
-// };
+function enableAddTaskList() {
+  if (titleInput.value !== '' && addedTaskItem.innerHTML !== '') {
+  makeListBtn.disabled = false;
+  }
+};
 
 function disableAddTaskList() {
   makeListBtn.disabled = true;
@@ -56,7 +57,7 @@ function clearFields() {
   addedTaskItem.innerHTML = '';
   disableClearAll();
   disableAddBtn();
-  // disableAddTaskList();
+  disableAddTaskList();
 };
 
 function addTaskItem(task) {
@@ -64,9 +65,9 @@ function addTaskItem(task) {
   addedTaskItem.insertAdjacentHTML('beforeend', `
     <li class="task-to-add" data-id=${id}><img class="delete-list-item" src="images/delete-list-item.svg" alt="circle with x">${taskInput.value}</li>
       `);
-  disableAddBtn();
   taskInput.value = '';
-  // enableAddTaskList();
+  enableAddTaskList();
+  disableAddBtn();
 };
 
 
@@ -116,37 +117,29 @@ function addTaskList(event) {
     urgency: false
   });
   appendCard(newToDoList);
-  // createToDoList(newToDoList, taskListArray);
   allToDos.push(newToDoList);
   newToDoList.saveToStorage(allToDos);
   clearFields();
   disableAddBtn();
 };
 
-
-
-
-
-
 function mapLocalStorage() {
   var listOfToDos = allToDos.map(function(obj) {
     return  obj = new ToDoList(obj); 
   });
-  console.log(listOfToDos)
-  allToDos = listOfToDos;
-  // createToDoList(allToDos);  
+  allToDos = listOfToDos; 
 };
 
 function generateTasks(obj) {
   var listItems = `<ul class="appended-tasks">`
-  console.log(obj)
   for (var i = 0; i < obj.tasks.length; i++) {
-    listItems +=    `
+    listItems +=    
+    `
     <li class="card-list-item"><img class="check" src="images/checkbox.svg" alt="">${obj.tasks[i].taskName}</li>
       `
   }
   return listItems;
-}
+};
 
 repopulateCards(allToDos)
 
@@ -154,7 +147,7 @@ function repopulateCards(array) {
   for (var i = 0; i < array.length; i++) {
     appendCard(array[i]);
   }
-}
+};
 
 function appendCard(toDoList) {
   cardPrompt.classList.add('hidden');
