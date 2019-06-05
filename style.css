@@ -6,8 +6,8 @@
 /*-----------------Body-----------------*/
 
 body {
-  height: 100vh;
-  width: 100vw;
+/*  height: 100vh;
+  width: 100vw;*/
 }
 img {
   height: 25px;
@@ -21,7 +21,7 @@ main {
 
 header {
   height: 80px;
-  width: 100vw;
+  /*width: 100vw;*/
   padding: 10px;
   background-color: #1F1F3D;
   display: flex;
@@ -77,8 +77,8 @@ aside {
   padding-top: 20px;
   background-color: #587A8A;
   border-right: 3px solid #3C6577;
-  display: flex;
-  flex-direction: column;
+  /*display: flex;*/
+  /*flex-direction: column;*/
 }
 
 .create-tasks {
@@ -91,10 +91,10 @@ aside {
 .input-labels {
   width: 90%;
   color: #C7D3D8;
+  margin: 10px 0 5px;
   font-size: 1em;
   font-weight: 600;
   text-align: left;
-  margin: 10px 0 5px;
 }
 
 #title-input {
@@ -141,7 +141,7 @@ li {
 }
 
 #task-input {
-  height: 100%;
+  /*height: 100%;*/
   width: 85%;
   font-size: 1.4em;
   padding-left: 10px;
@@ -151,7 +151,7 @@ li {
 }
 
 #add-task-btn {
-  height: 100%;
+  /*heighxt: 100%;*/
   width: 15%;
   color: #FFFFFF;
   padding: 1%;
@@ -192,11 +192,11 @@ li {
 }
 
 .filter-by-urgency {
-  width: 100%;
+  /*width: 100%;*/
   margin-top: 30px;
   border-top: 3px solid #3C6577;
   display: flex;
-  align-items: center;
+  /*align-items: center;*/
 }
 
 #filter-btn {
@@ -208,10 +208,10 @@ li {
 #card-area {
   /*height: 100vh;*/
   width: 66%;
+  padding: 2rem;
   background-color: #F3F6F7;
   columns: 2;
   column-gap: 1.5rem;
-  padding: 2rem;
 }
 
 #card-prompt {
@@ -267,7 +267,7 @@ h2 {
   color: #1F1F3D; 
   font-size: 1.4em;
   line-height: 1.25;
-  margin-bottom: 10px;
+  margin-bottom: 25px;
 }
 
 footer {
