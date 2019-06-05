@@ -14,8 +14,8 @@ The functionality is written in JavaScript. I used a separate file for my ToDoLi
 
 ## Full Screen
 
-![]()
+![](images/full.png)
 
 ## Media 
 
-![]()
+![](images/media.png)
