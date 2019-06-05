@@ -19,13 +19,14 @@
         <section class="create-tasks">
           <label class="input-labels" for="title-input">Task Title</label>
           <input id="title-input" type="text">
+          <ul id="added-task-item"></ul>
           <label class="input-labels" for="task-input">Task Item</label>
           <div class="task">
             <input id="task-input" type="text">
-            <button id="add-task-btn">+</button>
+            <button disabled id="add-task-btn"><img id="plus-img" src="images/plus.svg" alt="plus sign"></button>
           </div>
-          <button id="make-list-btn" class="btns">Make Task List</button>
-          <button id="clear-btn" class="btns">Clear All</button>
+          <button disabled id="make-list-btn" class="btns">Make Task List</button>
+          <button disabled id="clear-btn" class="btns">Clear All</button>
         </section>
         <section class="filter-by-urgency">
           <button id="filter-btn" class="btns">Filter by Urgency</button>
@@ -33,29 +34,11 @@
       </aside>
       <section id="card-area">
         <article id="card-prompt">
-          <p class="prompt-text">Begin by adding tasks in the fields to the right!</p>
-        </article>
-        <article id="card">
-          <header class="card-header">
-            <h2 id="title-output">Task Title</h2>
-          </header>
-          <main class="task-output"> 
-            <img src="images/checkbox.svg" alt="">
-            <img src="images/checkbox-active.svg" alt="">
-          </main> 
-          </header>
-          <footer>
-            <div class="footer-item">
-              <img id="urgent" src="images/urgent.svg" alt="">
-              <p>URGENT</p>
-            </div>
-            <div class="footer-item">
-              <img id="delete" src="images/delete.svg" alt="">
-              <p>DELETE</p>
-            </div>
-          </footer>
+          <p class="prompt-text">Start adding To Do Lists by adding a title and task to complete in the fields to the right!</p>
         </article>
       </section>
     </main>  
   </body>
+    <script type="text/javascript" src="todo-list.js"></script>
+    <script type="text/javascript" src="main.js"></script>
 </html>

@@ -6,16 +6,15 @@
 /*-----------------Body-----------------*/
 
 body {
- height: 100vh;
- width: 100vw;
+  height: 100vh;
+  width: 100vw;
 }
 img {
-  height: 20px;
-  width: 20px;
+  height: 25px;
+  width: 25px;
 }
 
 main {
-  /*min-height: 600px;*/
   display: flex;
 }
 /*----------------Header----------------*/
@@ -59,21 +58,23 @@ span {
 #search-input {
   height: 100%;
   width: 85%;
+  font-size: 1.4em;
   padding-left: 10px;
   border: none;
   border-bottom-right-radius: 3px;
   border-top-right-radius: 3px;
 }
 
-/*::placeholder {
-  color: #5356A4;
-}*/
+::placeholder {
+  font-size: 0.7em;
+}
 
 /*-----------------Side-----------------*/
 
 aside {
-  height: 100vh;
+ /* height: 100vh;*/
   width: 34%;
+  padding-top: 20px;
   background-color: #587A8A;
   border-right: 3px solid #3C6577;
   display: flex;
@@ -93,14 +94,44 @@ aside {
   font-size: 1em;
   font-weight: 600;
   text-align: left;
-  margin: 30px 0 5px;
+  margin: 10px 0 5px;
 }
 
 #title-input {
   height: 50px;
   width: 90%;
+  font-size: 1.4em;
+  padding-left: 10px;
   border: 2px solid #1F1F3D;
   border-radius: 3px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  display: flex;
+}
+
+#added-task-item {
+  width: 80%;
+  margin: 20px 0 0 0;
+}
+
+.delete-list-item {
+  height: 25px;
+  width: 25px;
+  margin-right: 10px;
+}
+
+.task-to-add {
+  width: 100%;
+  color: #C7D3D8;
+  font-size: 1.4em;
+  line-height: 1.25;
+  margin-bottom: 20px;
 }
 
 .task {
@@ -112,6 +143,8 @@ aside {
 #task-input {
   height: 100%;
   width: 85%;
+  font-size: 1.4em;
+  padding-left: 10px;
   border: 2px solid #1F1F3D;
   border-bottom-left-radius: 3px;
   border-top-left-radius: 3px;
@@ -121,13 +154,29 @@ aside {
   height: 100%;
   width: 15%;
   color: #FFFFFF;
-  font-size: 4em;
-  font-weight: 300;
-  padding: 2%;
+  padding: 1%;
   background-color: #1F1F3D;
   border: 2px solid #1F1F3D;
   border-bottom-right-radius: 3px;
   border-top-right-radius: 3px;
+}
+
+#plus-img {
+  height: 85%;
+  width: 85%;
+}
+
+#add-task-btn:disabled {
+  background-color: #59597A;
+  border-left: none;
+}
+
+#clear-btn:disabled {
+  background-color: #59597A;
+}
+
+#make-list-btn:disabled {
+  background-color: #59597A;
 }
 
 .btns {
@@ -154,10 +203,10 @@ aside {
   margin: 30px auto 200px;
 }
 
-/*----------------Section----------------*/
+/*----------------Card Area----------------*/
 
 #card-area {
-  height: 100vh;
+  /*height: 100vh;*/
   width: 66%;
   background-color: #F3F6F7;
   columns: 2;
@@ -168,29 +217,35 @@ aside {
 #card-prompt {
   height: 300px;
   width: 100%;
-  padding: 20%;
+  padding: 10%;
   border: 3px dashed #C7D3D8;
+  break-inside: avoid;
+}
+
+.hidden {
+  display: none;
 }
 
 .prompt-text {
   color: #C7D3D8;
-  font-size: 2em;
+  font-size: 1.5em;
   text-align: center;
 }
 
 #card {
-  height: 100vh;
   width: 100%;
+  margin-bottom: 25px;
   padding: 3px;
   background-color: #FFFFFF;
-  border: 3px solid #C7D3D8;
+  border: 2px solid #C7D3D8;
+  break-inside: avoid;
 }
 
 .card-header {
-  height: 50px;
+  height: 45px;
   width: 100%;
   background-color: #FFFFFF;
-  border-bottom: 3px solid #C7D3D8;
+  border-bottom: 2px solid #C7D3D8;
 }
 
 h2 {
@@ -198,30 +253,50 @@ h2 {
 }
 
 .task-output {
-  height: 150px;
   width: 100%;
+  padding: 10px 10px 0 10px;
+}
+
+.check {
+  height: 20px;
+  width: 20px;
+  margin: 5px 10px 0 0;
+} 
+
+.card-list-item {
+  color: #1F1F3D; 
+  font-size: 1.4em;
+  line-height: 1.25;
+  margin-bottom: 10px;
 }
 
 footer {
-  height: 70px;
+  height: 60px;
   width: 100%;
-  border-top: 3px solid #C7D3D8;
+  padding-top: 10px;
+  border-top: 2px solid #C7D3D8;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
 .footer-item {
+  margin: 5px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
+.delete, .urgent {
+  height: 25px;
+  width: 25px;
+}
+
 p {
   color: #3C6577;
-  font-size: 0.9em;
-  margin-top: 5px;
+  font-size: 0.8em;
+  margin: 5px;
 }
 
 

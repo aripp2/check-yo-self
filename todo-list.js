@@ -1,17 +1,23 @@
 class ToDoList {
-  constructor() {
+  constructor(obj) {
+    this.id = obj.id;
+    this.title = obj.title;
+    this.tasks = obj.tasks || [];
+    this.urgency = obj.urgency || false;
 
   }
-  saveToStorage() {
-
+  saveToStorage(toDoList) {
+    var allTasks = JSON.stringify(toDoList);
+    localStorage.setItem('toDos', allTasks);
   }
   deleteFromStorage() {
 
   }
-  deleteFromStorage () {
+  updateToDo () {
 
   }
   updateTask() {
     
   }
+  
 }
