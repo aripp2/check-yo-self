@@ -7,7 +7,6 @@ var addedTaskItem = document.getElementById('added-task-item');
 var cardArea = document.getElementById('card-area');
 var cardPrompt = document.getElementById('card-prompt');
 var deleteListItem = document.querySelector('.delete-list-item');
-
 var allToDos = JSON.parse(localStorage.getItem('toDos')) || [];
 
 titleInput.addEventListener('keyup', enableClearAll);
@@ -70,7 +69,6 @@ function addTaskItem(task) {
   disableAddBtn();
 };
 
-
 function deleteTask(event) {
   if (event.target.closest('.delete-list-item')) {
     event.target.closest('.task-to-add').remove();
@@ -131,6 +129,12 @@ function mapLocalStorage() {
   populateCards(allToDos);
 };
 
+function populateCards(array) {
+  for (var i = 0; i < array.length; i++) {
+    appendCard(array[i]);
+  }
+};
+
 function generateTasks(obj) {
   var listItems = `<ul class="appended-tasks">`
   for (var i = 0; i < obj.tasks.length; i++) {
@@ -140,13 +144,6 @@ function generateTasks(obj) {
       `
   }
   return listItems;
-};
-
-
-function populateCards(array) {
-  for (var i = 0; i < array.length; i++) {
-    appendCard(array[i]);
-  }
 };
 
 function appendCard(toDoList) {
@@ -163,11 +160,11 @@ function appendCard(toDoList) {
           </header>
           <footer>
             <div class="footer-item">
-              <img class="urgent" src="images/urgent.svg" alt="">
+              <img class="urgent" src="images/urgent.svg" alt="lightning bolt">
               <p>URGENT</p>
             </div>
             <div class="footer-item">
-              <img class="delete" src="images/delete.svg" alt="">
+              <img class="delete" src="images/delete.svg" alt="circle with x">
               <p>DELETE</p>
             </div>
           </footer>

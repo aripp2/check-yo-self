@@ -6,16 +6,20 @@ class ToDoList {
     this.urgency = obj.urgency || false;
 
   }
+
   saveToStorage(toDoList) {
     var allTasks = JSON.stringify(toDoList);
     localStorage.setItem('toDos', allTasks);
   }
+
   deleteFromStorage() {
 
   }
+
   updateToDo () {
 
   }
+  
   updateTask() {
     
   }
