@@ -14,8 +14,9 @@ class ToDoList {
     this.tasks[taskIndex].completed = !this.tasks[taskIndex].completed;
     this.saveToStorage(allToDos);
   }
-  deleteFromStorage() {
-
+  deleteFromStorage(cardIndex) {
+    allToDos.splice(cardIndex, 1);
+    this.saveToStorage(allToDos)
   }
   updateToDo () {
 

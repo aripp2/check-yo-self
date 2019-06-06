@@ -78,21 +78,21 @@ function deleteTask(event) {
   };
 };
 
-function createToDoList(obj) {
-  var uniqueId = obj.id;
-  var taskTitle = obj.title;
-  var tasks = obj.tasks;
-  var urgency = obj.urgency;
-  var newToDoList = new ToDoList({
-    id: uniqueId,
-    title: taskTitle,
-    tasks: tasks,
-    urgency: urgency
-  })
-  appendCard(newToDoList);
-  appendTaskList(obj.tasks);
-  return newToDoList;
-};
+// function createToDoList(obj) {
+//   var uniqueId = obj.id;
+//   var taskTitle = obj.title;
+//   var tasks = obj.tasks;
+//   var urgency = obj.urgency;
+//   var newToDoList = new ToDoList({
+//     id: uniqueId,
+//     title: taskTitle,
+//     tasks: tasks,
+//     urgency: urgency
+//   })
+//   appendCard(newToDoList);
+//   appendTaskList(obj.tasks);
+//   return newToDoList;
+// };
 
 function createTaskItems() {
   var domTasks = document.querySelectorAll('.task-to-add');
@@ -200,12 +200,21 @@ function getTaskIndex(id, cardIndex) {
 function toggleChecked(event) {
   if (event.target.classList.contains('card-list-item') || event.target.classList.contains('check')) {
   var cardId = getCardId(event);
+  var cardIndex = getCardIndex(cardId);
   var cardObj = getCardObj(cardId);
   var taskId = event.target.closest('.card-list-item').getAttribute('data-id');
   var taskObj = getTaskObj(taskId, cardObj.tasks);
-  updateCheckedStatus(event, taskObj);
+  var taskArray = cardObj.tasks;
+  console.log('task array', taskArray )
+  updateCheckedStatus(event, taskObj, taskArray);
   }
 };
+
+function enableDelete(event, tasks) {
+  for (var i = 0; i < tasks.length; i++) {
+    if (tasks[i].completed === true)
+  }
+}
 
 function updateCheckedStatus(event, taskObj) {
   if (taskObj.completed === true) {
@@ -214,6 +223,8 @@ function updateCheckedStatus(event, taskObj) {
     event.target.setAttribute('src', 'images/checkbox.svg');
   }
   updateStyle(event);
+  
+  enableDelete(event, taskArray);
 };
 
 function updateStyle(event) {
@@ -227,7 +238,6 @@ function getCardObj(cardId) {
     return cardObj.id == cardId;
   })
 };
-
 
 function getTaskObj(taskId, cardTasks) {
   return cardTasks.find(function(task) {
