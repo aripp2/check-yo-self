@@ -12,16 +12,19 @@ class ToDoList {
     localStorage.setItem('toDos', allTasks);
   }
 
-  deleteFromStorage() {
-
-  }
-
-  updateToDo () {
-
+  updateTask(taskIndex) {
+    this.tasks[taskIndex].completed = !this.tasks[taskIndex].completed;
+    this.saveToStorage(allToDos);
   }
   
-  updateTask() {
-    
+  deleteFromStorage(cardIndex) {
+    allToDos.splice(cardIndex, 1);
+    this.saveToStorage(allToDos);
+  }
+  
+  updateToDo () {
+    this.urgency = !this.urgency;
+    this.saveToStorage(allToDos);
   }
   
 }
