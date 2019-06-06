@@ -101,6 +101,7 @@ ul {
 }
 
 li {
+  font-size: 1.4em;
   display: flex;
 }
 
@@ -118,7 +119,7 @@ li {
 .task-to-add {
   width: 100%;
   color: #C7D3D8;
-  font-size: 1.4em;
+  /*font-size: 1.4em;*/
   line-height: 1.25;
   margin-bottom: 20px;
 }
@@ -251,9 +252,14 @@ h2 {
 
 .card-list-item {
   color: #1F1F3D; 
-  font-size: 1.4em;
+  /*font-size: 1.4em;*/
   line-height: 1.25;
   margin-bottom: 25px;
+}
+
+.completed-item {
+  color: #3C6577;
+  font-style: italic;
 }
 
 footer {

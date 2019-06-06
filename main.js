@@ -135,15 +135,15 @@ function mapLocalStorage() {
 function generateTasks(obj) {
   var listItems = `<ul class="appended-tasks">`
   for (var i = 0; i < obj.tasks.length; i++) {
+  var isCompleted = obj.tasks[i].completed ? 'completed-item' : 'card-list-item';
+  var checkImg = obj.tasks[i].completed ? 'checkbox-active.svg' : 'checkbox.svg';
     listItems +=    
     `
-    <li class="card-list-item" data-id="${obj.tasks[i].taskId}"><img id="status" class="check" src="images/checkbox.svg" alt="empty circle">${obj.tasks[i].taskName}</li>
+    <li class="card-list-item" data-id="${obj.tasks[i].taskId}"><img class="check" src="images/${checkImg}" alt="circle"><p class="${isCompleted}">${obj.tasks[i].taskName}</p></li>
       `
   }
-  console.log('data ', obj.tasks[0].taskId)
   return listItems;
 };
-
 
 function populateCards(array) {
   for (var i = 0; i < array.length; i++) {
@@ -176,13 +176,9 @@ function appendCard(toDoList) {
         </article>`);
 };
 
-// <img src="images/checkbox-active.svg" alt="">
-
 function cardAreaHandler(event) {
   updateCompleted(event);
 };
-
-
 
 function getCardId(event) {
  if (event.target.closest('article')) {
@@ -197,14 +193,23 @@ function getCardIndex(id) {
  });
 };
 
-function getTaskId(event) {
+function updateCompleted(event) {
   if (event.target.classList.contains('card-list-item') || event.target.classList.contains('check')) {
   var index = getCardIndex(getCardId(event));
   var taskId = event.target.closest('.card-list-item').getAttribute('data-id');
   var taskIndex = getTaskIndex(taskId, index);
-  console.log('taskIndex ',taskIndex)
+  allToDos[index].updateTask(taskIndex);
   }
 };
+
+// function toggleChecked(event) {
+//   var checkedStatus = document.querySelector('.check');
+//   var checkStyle = document.querySelector('.list-text');
+//   checkedStatus = toToggle ? 'checkbox-active.svg' : 'checkbox.svg';
+//   checkStyle = toToggle ? 'completed-item' : 'card-list-item';
+// }
+
+
 
 function getTaskIndex(id, cardIndex) {
   return allToDos[cardIndex].tasks.findIndex(function(taskObj) {
@@ -214,50 +219,8 @@ function getTaskIndex(id, cardIndex) {
 
 
 
-
-function updateCompleted(event) {
-   var cardId = getCardId(event);
-   var cardIndex = getCardIndex(cardId);
-   var taskId = getTaskId(event);
-   // var taskIndex = getTaskIndex()
-   // var completed = 'images/checkbox-active.svg';
-   // var not-completed = document.querySelector(`#card[data-id="${cardId}"] #not-completed`);
-   // console.log('id ', cardId);
-   // console.log('index ', cardIndex);
-   // console.log('task id ', taskId);
   
- }
 
 
-  // return event.target.closest.classList.contains('.card-list-item')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//    notCompleted.src = completed;
-//    toDoList[].updateToDo().
-//    // ideas[cardIndex].updateStar();
-//  if (toDoList[cardIndex].star === false) {
-//    var whiteStar = 'images/star.svg';
-//    oldStar.src = whiteStar;
-//  } else {
-//    oldStar.src = yellowStar;
-//    }
-//  }
-// };
 
 

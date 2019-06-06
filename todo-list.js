@@ -10,8 +10,9 @@ class ToDoList {
     var allTasks = JSON.stringify(toDoList);
     localStorage.setItem('toDos', allTasks);
   }
-  updateTask() {
-    
+  updateTask(taskIndex) {
+    this.tasks[taskIndex].completed = !this.tasks[taskIndex].completed;
+    this.saveToStorage(allToDos);
   }
   deleteFromStorage() {
 
