@@ -16,7 +16,7 @@ class ToDoList {
   }
   deleteFromStorage(cardIndex) {
     allToDos.splice(cardIndex, 1);
-    this.saveToStorage(allToDos)
+    this.saveToStorage(allToDos);
   }
   updateToDo () {
 

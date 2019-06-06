@@ -157,7 +157,7 @@ function appendCard(toDoList) {
               <p>URGENT</p>
             </div>
             <div class="footer-item">
-              <img class="delete" src="images/delete.svg" alt="circle with x">
+              <button disabled class="delete-btn"><img class="delete" src="images/delete.svg" alt="circle with x"></button>
               <p>DELETE</p>
             </div>
           </footer>
@@ -167,6 +167,7 @@ function appendCard(toDoList) {
 function cardAreaHandler(event) {
   updateCompleted(event);
   toggleChecked(event);
+  deleteCard(event);
 };
 
 function getCardId(event) {
@@ -205,16 +206,45 @@ function toggleChecked(event) {
   var taskId = event.target.closest('.card-list-item').getAttribute('data-id');
   var taskObj = getTaskObj(taskId, cardObj.tasks);
   var taskArray = cardObj.tasks;
-  console.log('task array', taskArray )
-  updateCheckedStatus(event, taskObj, taskArray);
+  updateCheckedStatus(event, taskObj);
+  enableDelete(event, taskArray);
   }
 };
 
-function enableDelete(event, tasks) {
-  for (var i = 0; i < tasks.length; i++) {
-    if (tasks[i].completed === true)
+function enableDelete(event, taskArray) {
+  var deleteBtn = event.target.classList.contains('delete-btn');
+  var counter = 0;
+  for (var i = 0; i < taskArray.length; i++) {
+    if (taskArray[i].completed === true) {
+      counter ++;
+    }
   }
-}
+    if (counter === taskArray.length) {
+      deleteBtn.disabled = false;
+    updateDeleteBtn(event, deleteBtn)
+
+    } else {
+      deleteBtn.disabled = true;
+    }
+};
+
+function updateDeleteBtn(event, deleteBtn) {
+  if (deleteBtn.disabled === false) {
+      event.target.setAttribute('src', 'images/delete-active.svg');
+  } else {
+      event.target.setAttribute('src', 'images/delete.svg');
+  }
+};
+
+function deleteCard(event) {
+  console.log('here', )
+  if (event.target.closest('.delete-btn')) {
+    var cardId = getCardId(event);
+    var cardIndex = getCardIndex(cardId);
+    event.target.closest('#card').remove();
+  }
+  allToDos[cardIndex].deleteFromStorage(cardIndex);
+};
 
 function updateCheckedStatus(event, taskObj) {
   if (taskObj.completed === true) {
@@ -223,15 +253,13 @@ function updateCheckedStatus(event, taskObj) {
     event.target.setAttribute('src', 'images/checkbox.svg');
   }
   updateStyle(event);
-  
-  enableDelete(event, taskArray);
 };
 
 function updateStyle(event) {
   var taskText = event.target.closest('li').querySelector('.work');
   taskText.classList.toggle('incomplete-item');
   taskText.classList.toggle('completed-item');
-}
+};
 
 function getCardObj(cardId) {
   return allToDos.find(function(cardObj) {
