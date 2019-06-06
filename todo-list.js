@@ -6,18 +6,22 @@ class ToDoList {
     this.urgency = obj.urgency || false;
 
   }
+
   saveToStorage(toDoList) {
     var allTasks = JSON.stringify(toDoList);
     localStorage.setItem('toDos', allTasks);
   }
+
   updateTask(taskIndex) {
     this.tasks[taskIndex].completed = !this.tasks[taskIndex].completed;
     this.saveToStorage(allToDos);
   }
+  
   deleteFromStorage(cardIndex) {
     allToDos.splice(cardIndex, 1);
     this.saveToStorage(allToDos);
   }
+  
   updateToDo () {
     this.urgency = !this.urgency;
     this.saveToStorage(allToDos);

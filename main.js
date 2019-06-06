@@ -7,7 +7,6 @@ var addedTaskItem = document.getElementById('added-task-item');
 var cardArea = document.getElementById('card-area');
 var cardPrompt = document.getElementById('card-prompt');
 var deleteListItem = document.querySelector('.delete-list-item');
-
 var allToDos = JSON.parse(localStorage.getItem('toDos')) || [];
 
 titleInput.addEventListener('keyup', enableClearAll);
@@ -71,7 +70,6 @@ function addTaskItem(task) {
   disableAddBtn();
 };
 
-
 function deleteTask(event) {
   if (event.target.closest('.delete-list-item')) {
     event.target.closest('.task-to-add').remove();
@@ -115,7 +113,6 @@ function mapLocalStorage() {
   allToDos = listOfToDos; 
   populateCards(allToDos);
 };
-
 
 function populateCards(array) {
   for (var i = 0; i < array.length; i++) {
