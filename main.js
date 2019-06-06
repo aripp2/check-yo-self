@@ -78,22 +78,6 @@ function deleteTask(event) {
   };
 };
 
-// function createToDoList(obj) {
-//   var uniqueId = obj.id;
-//   var taskTitle = obj.title;
-//   var tasks = obj.tasks;
-//   var urgency = obj.urgency;
-//   var newToDoList = new ToDoList({
-//     id: uniqueId,
-//     title: taskTitle,
-//     tasks: tasks,
-//     urgency: urgency
-//   })
-//   appendCard(newToDoList);
-//   appendTaskList(obj.tasks);
-//   return newToDoList;
-// };
-
 function createTaskItems() {
   var domTasks = document.querySelectorAll('.task-to-add');
   var taskItems = [];
@@ -141,24 +125,25 @@ function populateCards(array) {
 
 function appendCard(toDoList) {
   cardPrompt.classList.add('hidden');
+  var urgentStatus = toDoList.urgency ? 'images/urgent-active.svg' : 'images/urgent.svg';
   var listItems = generateTasks(toDoList);
-  cardArea.insertAdjacentHTML('afterbegin',`<article id="card" data-id="${toDoList.id}">
+  cardArea.insertAdjacentHTML('afterbegin',`<article id="card" class="urgent-task-list" data-id="${toDoList.id}">
           <header class="card-header">
-            <h2 id="title-output">${toDoList.title}</h2>
+            <h2 id="title-output" class="urgent-task-list">${toDoList.title}</h2>
           </header>
           <main class="task-output"> 
             ${listItems}
             </ul>
           </main> 
           </header>
-          <footer>
+          <footer class="urgent-task-list">
             <div class="footer-item">
-              <button class="urgent-btn"><img class="urgent" src="images/urgent.svg" alt="blue lightning bolt"></button>
-              <p>URGENT</p>
+              <button class="urgent-btn"><img class="urgent" src="${urgentStatus}" alt="blue lightning bolt"></button>
+              <p class="urgent-task-list">URGENT</p>
             </div>
             <div class="footer-item">
               <button disabled class="delete-btn"><img class="delete" src="images/delete.svg" alt="circle with x"></button>
-              <p>DELETE</p>
+              <p class="urgent-task-list">DELETE</p>
             </div>
           </footer>
         </article>`);
@@ -167,7 +152,8 @@ function appendCard(toDoList) {
 function cardAreaHandler(event) {
   updateCompleted(event);
   toggleChecked(event);
-  // deleteCard(event);
+  // enableDelete(event);
+  deleteCard(event);
   updateUrgency(event);
 };
 
@@ -208,55 +194,77 @@ function toggleChecked(event) {
   var taskObj = getTaskObj(taskId, cardObj.tasks);
   var taskArray = cardObj.tasks;
   updateCheckedStatus(event, taskObj);
-  enableDelete(event, taskArray);
   }
 };
 
-function enableDelete(event, taskArray) {
-  var deleteBtn = event.target.classList.contains('delete-btn');
-  var counter = 0;
-  for (var i = 0; i < taskArray.length; i++) {
-    if (taskArray[i].completed === true) {
-      counter ++;
-    }
-  }
-    if (counter === taskArray.length) {
-      deleteBtn.disabled = false;
-    updateDeleteBtn(event, deleteBtn)
+// function enableDelete(event, tasks) {
+//   if (event.target.closest('article').querySelector('.delete-btn')) {
+//   var deleteBtn = document.querySelector('.delete-btn');
+//   var cardId = getCardId(event);
+//   var cardObj = getCardObj(cardId);
+//   var taskArray = cardObj.tasks;
+//   var counter = 0;
+//   for (var i = 0; i < taskArray.length; i++) {
+//     if (taskArray[i].completed === true) {
+//       counter ++;
+//       if (counter === taskArray.length) {
+//       deleteBtn.disabled = false;
+//     } else {
+//       deleteBtn.disabled = true;
+//         }
+//     updateDeleteBtn(event, deleteBtn)
+//       }
+//     }
+//   }
+// };
 
-    } else {
-      deleteBtn.disabled = true;
-    }
+// function updateDeleteBtn(event, deleteBtn) {
+//   if (deleteBtn.disabled === false) {
+//     event.target.setAttribute('src', 'images/delete-active.svg');
+//   } else {
+//     event.target.setAttribute('src', 'images/delete.svg');
+//   }
+// };
+
+function deleteCard(event) {
+  if (event.target.closest('.delete-btn')) {
+    var cardId = getCardId(event);
+    var cardIndex = getCardIndex(cardId);
+    event.target.closest('#card').remove();
+  }
+  allToDos[cardIndex].deleteFromStorage(cardIndex);
+  reappearPrompt(event);
 };
 
-function updateDeleteBtn(event, deleteBtn) {
-  if (deleteBtn.disabled === false) {
-      event.target.setAttribute('src', 'images/delete-active.svg');
-  } else {
-      event.target.setAttribute('src', 'images/delete.svg');
+function reappearPrompt() {
+  if (allToDos.length === 0) {
+    cardPrompt.classList.remove('hidden');
   }
 };
-
-  // function deleteCard(event) {
-  //   console.log('here', )
-  //   if (event.target.closest('.delete-btn')) {
-  //     var cardId = getCardId(event);
-  //     var cardIndex = getCardIndex(cardId);
-  //     event.target.closest('#card').remove();
-  //   }
-  //   allToDos[cardIndex].deleteFromStorage(cardIndex);
-  // };
 
 function updateUrgency(event) {
-  console.log('in here')
   if (event.target.closest('.urgent-btn')) {
     var cardId = getCardId(event);
     var cardIndex = getCardIndex(cardId);
     var cardObj = getCardObj(cardId);
     cardObj.updateToDo();
+    updateUrgencyStyles(event, cardObj);
   }
 }
 
+function updateUrgencyStyles(event) {
+  var urgencyState = event.target.closest('article');
+  urgencyState.classList.toggle('urgent-task-list');
+  updateUrgentStyles(event, cardObj);
+}
+
+function updateUrgentBtn(event, cardObj) {
+  if (cardObj.urgency === true) {
+      event.target.setAttribute('src', 'images/urgent-active.svg');
+  } else {
+      event.target.setAttribute('src', 'images/urgent.svg');
+  }
+};
 
 function updateCheckedStatus(event, taskObj) {
   if (taskObj.completed === true) {

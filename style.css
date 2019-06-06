@@ -296,6 +296,25 @@ p {
   margin: 5px;
 }
 
+/*----------------Urgent-----------------*/
+
+/*.urgent-task-list article {
+  background-color: #FFE89D;
+  border: 2px solid #FFC30C;
+}
+
+.urgent-task-list footer {
+  border-top: 2px solid #FFC30C;
+}
+
+.urgent-task-list h2 {
+  border-bottom: 2px solid #FFC30C;
+}
+
+.urgent-task-list p {
+  color: #B23A25;
+}*/
+
 /*-----------------Media-----------------*/
 
 @media screen and (max-width: 800px) {
