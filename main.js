@@ -153,7 +153,7 @@ function appendCard(toDoList) {
           </header>
           <footer>
             <div class="footer-item">
-              <img class="urgent" src="images/urgent.svg" alt="blue lightning bolt">
+              <button class="urgent-btn"><img class="urgent" src="images/urgent.svg" alt="blue lightning bolt"></button>
               <p>URGENT</p>
             </div>
             <div class="footer-item">
@@ -167,7 +167,8 @@ function appendCard(toDoList) {
 function cardAreaHandler(event) {
   updateCompleted(event);
   toggleChecked(event);
-  deleteCard(event);
+  // deleteCard(event);
+  updateUrgency(event);
 };
 
 function getCardId(event) {
@@ -236,15 +237,26 @@ function updateDeleteBtn(event, deleteBtn) {
   }
 };
 
-function deleteCard(event) {
-  console.log('here', )
-  if (event.target.closest('.delete-btn')) {
+  // function deleteCard(event) {
+  //   console.log('here', )
+  //   if (event.target.closest('.delete-btn')) {
+  //     var cardId = getCardId(event);
+  //     var cardIndex = getCardIndex(cardId);
+  //     event.target.closest('#card').remove();
+  //   }
+  //   allToDos[cardIndex].deleteFromStorage(cardIndex);
+  // };
+
+function updateUrgency(event) {
+  console.log('in here')
+  if (event.target.closest('.urgent-btn')) {
     var cardId = getCardId(event);
     var cardIndex = getCardIndex(cardId);
-    event.target.closest('#card').remove();
+    var cardObj = getCardObj(cardId);
+    cardObj.updateToDo();
   }
-  allToDos[cardIndex].deleteFromStorage(cardIndex);
-};
+}
+
 
 function updateCheckedStatus(event, taskObj) {
   if (taskObj.completed === true) {

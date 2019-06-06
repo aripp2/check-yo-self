@@ -285,6 +285,11 @@ footer {
   width: 25px;
 }
 
+.urgent-btn, .delete-btn {
+  background-color: transparent;
+  border: none;
+}
+
 p {
   color: #3C6577;
   font-size: 0.8em;
