@@ -132,18 +132,6 @@ function mapLocalStorage() {
   populateCards(allToDos);
 };
 
-function generateTasks(obj) {
-  var listItems = `<ul class="appended-tasks">`
-  for (var i = 0; i < obj.tasks.length; i++) {
-  var isCompleted = obj.tasks[i].completed ? 'completed-item' : 'card-list-item';
-  var checkImg = obj.tasks[i].completed ? 'checkbox-active.svg' : 'checkbox.svg';
-    listItems +=    
-    `
-    <li class="card-list-item" data-id="${obj.tasks[i].taskId}"><img class="check" src="images/${checkImg}" alt="circle"><p class="${isCompleted}">${obj.tasks[i].taskName}</p></li>
-      `
-  }
-  return listItems;
-};
 
 function populateCards(array) {
   for (var i = 0; i < array.length; i++) {
@@ -178,11 +166,11 @@ function appendCard(toDoList) {
 
 function cardAreaHandler(event) {
   updateCompleted(event);
+  toggleChecked(event);
 };
 
 function getCardId(event) {
  if (event.target.closest('article')) {
-  console.log('clicked on a card')
   return event.target.closest('#card').getAttribute('data-id');
  }
 };
@@ -195,27 +183,73 @@ function getCardIndex(id) {
 
 function updateCompleted(event) {
   if (event.target.classList.contains('card-list-item') || event.target.classList.contains('check')) {
-  var index = getCardIndex(getCardId(event));
+  var cardId = getCardId(event);
+  var index = getCardIndex(cardId);
   var taskId = event.target.closest('.card-list-item').getAttribute('data-id');
   var taskIndex = getTaskIndex(taskId, index);
   allToDos[index].updateTask(taskIndex);
   }
 };
 
-// function toggleChecked(event) {
-//   var checkedStatus = document.querySelector('.check');
-//   var checkStyle = document.querySelector('.list-text');
-//   checkedStatus = toToggle ? 'checkbox-active.svg' : 'checkbox.svg';
-//   checkStyle = toToggle ? 'completed-item' : 'card-list-item';
-// }
-
-
-
 function getTaskIndex(id, cardIndex) {
   return allToDos[cardIndex].tasks.findIndex(function(taskObj) {
     return taskObj.taskId == parseInt(id);
   })
 };
+
+function toggleChecked(event) {
+  if (event.target.classList.contains('card-list-item') || event.target.classList.contains('check')) {
+  var cardId = getCardId(event);
+  var cardObj = getCardObj(cardId);
+  var taskId = event.target.closest('.card-list-item').getAttribute('data-id');
+  var taskObj = getTaskObj(taskId, cardObj.tasks);
+  updateCheckedStatus(event, taskObj);
+  }
+};
+
+function updateCheckedStatus(event, taskObj) {
+  if (taskObj.completed === true) {
+    event.target.setAttribute('src', 'images/checkbox-active.svg');
+  } else {
+    event.target.setAttribute('src', 'images/checkbox.svg');
+  }
+  updateStyle(event);
+};
+
+function updateStyle(event) {
+  var taskText = event.target.closest('li').querySelector('.work');
+  taskText.classList.toggle('incomplete-item');
+  taskText.classList.toggle('completed-item');
+}
+
+function getCardObj(cardId) {
+  return allToDos.find(function(cardObj) {
+    return cardObj.id == cardId;
+  })
+};
+
+
+function getTaskObj(taskId, cardTasks) {
+  return cardTasks.find(function(task) {
+    return task.taskId == taskId;
+  })
+};
+
+function generateTasks(obj) {
+  var listItems = `<ul class="appended-tasks">`
+  for (var i = 0; i < obj.tasks.length; i++) {
+  var isCompleted = obj.tasks[i].completed ? 'completed-item' : 'incomplete-item';
+  var checkImg = obj.tasks[i].completed ? 'images/checkbox-active.svg' : 'images/checkbox.svg';
+    listItems +=    
+    `
+    <li class="card-list-item" data-id="${obj.tasks[i].taskId}"><img class="check" src="${checkImg}" alt="circle"><p class="work ${isCompleted}">${obj.tasks[i].taskName}</p></li>
+      `
+  }
+  return listItems;
+};
+
+
+
 
 
 
